@@ -1,0 +1,23 @@
+
+查看主题
+bin/kafka-topics.sh --zookeeper hadoop102:2181 --list
+
+创建
+bin/kafka-topics.sh --zookeeper hadoop102:2181 --create --replication-factor 3 --partitions 1 --topic colllog
+
+删除
+bin/kafka-topics.sh --zookeeper hadoop102:2181 --delete --topic topic_start
+
+生产者 发送
+bin/kafka-console-producer.sh --broker-list hadoop102:9092 --topic first
+
+消费者 
+bin/kafka-console-consumer.sh --bootstrap-server hadoop102:9092 --from-beginning --topic first
+
+bin/kafka-console-consumer.sh --bootstrap-server hadoop102:9092  --topic topic_start
+
+查看某个Topic的详情
+bin/kafka-topics.sh --zookeeper hadoop102:2181 --describe --topic first
+
+修改分区数
+bin/kafka-topics.sh --zookeeper hadoop102:2181 --alter --topic first --partitions 6
